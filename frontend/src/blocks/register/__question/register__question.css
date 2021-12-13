@@ -1,0 +1,11 @@
+.register__question {
+  display: flex;
+  color: white;
+  justify-content: center;
+  width: 100%;
+  margin-top: -15px;
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+  line-height: 22px;
+}

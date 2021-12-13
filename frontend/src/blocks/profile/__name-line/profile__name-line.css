@@ -1,0 +1,10 @@
+.profile__name-line {
+  display: flex;
+  align-items: flex-end;
+}
+
+@media (max-width: 768px) {
+  .profile__name-line {
+    position: relative;
+  }
+}

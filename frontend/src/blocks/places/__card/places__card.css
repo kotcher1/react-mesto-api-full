@@ -1,0 +1,41 @@
+.places__card {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 282px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.places__card:not(:nth-child(3n+1)) {
+  margin-left: 17px;
+}
+
+.places__card:nth-child(n+4) {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 991px) {
+  .places__card:not(:nth-child(3n+1)) {
+    margin-left: 0;
+  }
+
+  .places__card:not(:nth-child(2n+1)) {
+    margin-left: 17px;
+  }
+
+  .places__card:nth-child(n+3) {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .places__card:not(:nth-child(2n+1)) {
+    margin-left: 0;
+  }
+
+  .places__card:nth-child(n+2) {
+    margin-top: 20px;
+  }
+}

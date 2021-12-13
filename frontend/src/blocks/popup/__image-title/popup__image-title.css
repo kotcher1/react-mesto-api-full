@@ -1,0 +1,8 @@
+.popup__image-title {
+  color: white;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+  margin-top: 10px;
+}

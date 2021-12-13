@@ -1,0 +1,8 @@
+.places__name-line {
+  background-color: white;
+  padding: 22px 15px 22px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,9 @@
+.popup__input_white {
+  color: white;
+  background-color: black;
+  border-bottom: 2px solid #CCCCCC;
+}
+
+.popup__input_white::placeholder {
+  color: #CCCCCC;
+}

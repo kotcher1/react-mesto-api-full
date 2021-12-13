@@ -1,0 +1,14 @@
+@media screen and (max-width: 768px) {
+  .header_main {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 40px 27px 30px;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .header_main {
+    padding: 40px 27px 30px;
+  }
+}
