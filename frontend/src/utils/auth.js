@@ -23,8 +23,8 @@ export const login = (email, password) => {
   })
   .then((response => response.json()))
   .then((data) => {
-    if (data.token){
-      localStorage.setItem('jwt', data.token);
+    if (data.jwt){
+      localStorage.setItem('jwt', data.jwt);
       return data;
     } 
   })
@@ -39,3 +39,4 @@ export const checkToken = (jwt) => {
   })
   .then(res => res.json())
 };
+ 
