@@ -54,7 +54,7 @@ class Api {
   }
 
   likeCard(cardId, method) {
-    return fetch(`${this._options.baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this._options.baseUrl}/cards/${cardId}/likes`, {
       method: method,
       headers: this._options.headers,
     })
@@ -88,7 +88,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://nomoreparties.co/v1/cohort-26',
+  baseUrl: 'https://express-mesto.nomoredomains.rocks',
   headers: {
     authorization: 'e21e18fa-ab6d-4a3e-87f4-9a2549a22c3a',
     'Content-Type': 'application/json'
