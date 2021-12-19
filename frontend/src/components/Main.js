@@ -34,20 +34,20 @@ class Main extends React.Component {
         <section className="profile">
           <div className="profile__block">
             <div className="profile__avatar-block">
-              <img className="profile__avatar" src={this.context.avatar} alt="Фото" />
+              <img className="profile__avatar" src={this.context.data.avatar} alt="Фото" />
               <button className="profile__avatar-button" onClick={this.handleEditAvatarClick} type="button">
               </button>
             </div>
             <div className="profile__info">
               <div className="profile__name-line">
                 <h1 className="profile__name">
-                  {this.context.name}
+                  {this.context.data.name}
                 </h1>
                 <button className="profile__edit" onClick={this.handleEditProfileClick} type="button">
                 </button>
               </div>
               <p className="profile__profession">
-                {this.context.about}
+                {this.context.data.about}
               </p>
             </div>
           </div>
@@ -55,8 +55,11 @@ class Main extends React.Component {
           </button>
         </section>
         <section className="places">
-          {console.log(this.props.cards)}
-          {this.props.cards.lengt > 0 && this.props.cards.map((card) => {
+          {this.props.cards.data ? this.props.cards.data.map((card) => {
+            return (
+              <Card card={card} key={card._id} onCardClick={this.handleCardClick} onCardLike={this.onCardLike} onCardDelete={this.onCardDelete}/>
+            )
+          }) : this.props.cards.map((card) => {
             return (
               <Card card={card} key={card._id} onCardClick={this.handleCardClick} onCardLike={this.onCardLike} onCardDelete={this.onCardDelete}/>
             )

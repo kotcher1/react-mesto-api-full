@@ -4,7 +4,6 @@ const AuthError = require('../errors/auth-error');
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
-  // console.log(req.headers.authorization, 'g');
   const authorizationInfo = req.headers.authorization;
   if (!authorizationInfo || !authorizationInfo.startsWith('Bearer ')) {
     throw new AuthError('Ошибка авторизации');
@@ -14,9 +13,7 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    console.log(NODE_ENV, JWT_SECRET)
-    payload = jwt.verify(token, 'some-secret-key');
-    console.log(payload)
+    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key');
   } catch (err) {
     next(new AuthError('Ошибка авторизации111'));
   }

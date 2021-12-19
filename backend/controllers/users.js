@@ -115,25 +115,12 @@ module.exports.updateUserAvatar = (req, res, next) => {
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
 
-  // return Users.findUserByCredentials(email, password)
-  //   .then((user) => {
-  //     const { NODE_ENV, JWT_SECRET } = process.env;
-  //     const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
-  //     res.cookie('jwt', token, {
-  //       maxAge: 3600000,
-  //       httpOnly: true,
-  //     });
-  //     res.send({ jwt: token });
-  //     res.end();
-  //   })
-  //   .catch(next);
-
   return Users.findUserByCredentials(email, password)
     .then((user) => {
       res.send({
         jwt: jwt.sign({
           _id: user._id,
-        }, 'some-secret-key', {
+        }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', {
           expiresIn: '7d',
         }),
       });

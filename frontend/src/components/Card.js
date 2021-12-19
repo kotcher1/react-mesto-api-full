@@ -25,25 +25,25 @@ export default class Card extends React.Component {
   }
 
   render() {
+    const isOwn = this.props.card.owner === this.context.data._id;
 
-    const isOwn = this.props.card.owner._id === this.context._id;
     const cardDeleteButtonClassName = (`places__delete-button ${isOwn ? '' : 'places__delete-button_hidden'}`); 
-    const isLiked = this.props.card.likes.some(i => i._id === this.context._id);
+    const isLiked = this.props.card.data ? this.props.card.data.likes.some(i => i._id === this.context._id) : this.props.card.likes.some(i => i._id === this.context._id);
     const cardLikeButtonClassName = (`places__like ${isLiked ? 'places__like_liked' : ''}`);
 
     return (
       <div className="places__card">
-        <img className="places__image" src={this.props.card.link} alt=" " onClick={this.handleClick} />
+        <img className="places__image" src={ this.props.card.data ? this.props.card.data.link : this.props.card.link} alt=" " onClick={this.handleClick} />
         <div className="places__name-line">
           <p className="places__name">
-            {this.props.card.name}
+            {this.props.card.data ? this.props.card.data.name : this.props.card.name}
           </p>
           <div className="places__like-container">
             <div className={cardLikeButtonClassName} onClick={this.handleLikeClick}>
       
             </div>
             <p className="places__like-number">
-              {this.props.card.likes.length}
+              {this.props.card.data ? this.props.card.data.likes.length : this.props.card.likes.length}
             </p>
           </div>
         </div>

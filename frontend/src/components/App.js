@@ -56,12 +56,12 @@ class App extends React.Component  {
   }
 
   handleCardLike = (card) => {
-    const isLiked = card.likes.some(i => i._id === this.state.currentUser._id);
+    const isLiked = card.data ? card.data.likes.some(i => i._id === this.state.currentUser._id) : card.likes.some(i => i._id === this.state.currentUser._id);
     const apiMethod = isLiked ? "DELETE" : "PUT";
-    api.likeCard(card._id, apiMethod)
+    api.likeCard(card.data ? card.data._id : card._id, apiMethod)
     .then((newCard) => {
       this.setState((state) => ({
-        cards: state.cards.map((c) => (c._id === card._id ? newCard : c)),
+        cards: state.cards.data ? state.cards.data.map((c) => (c._id === card._id ? newCard : c)) : state.cards.map((c) => (c._id === card._id ? newCard : c)),
       }));
     }).catch((err) => {
       console.log(err);
@@ -196,6 +196,7 @@ class App extends React.Component  {
                   onAddCard={this.handleAddPlaceSubmit}
                   handleOut={this.handleOut}
                   >
+                    {console.log(this.state.email, 'f')}
                 </ProtectedRoute>
                 <Route path="/sign-up">
                   <Header page="sign_up" method={this.handleClickLogin}/>
