@@ -90,8 +90,9 @@ class Api {
 const api = new Api({
   baseUrl: 'https://express-mesto.nomoredomains.rocks',
   headers: {
-    authorization: 'e21e18fa-ab6d-4a3e-87f4-9a2549a22c3a',
-    'Content-Type': 'application/json'
+    // authorization: 'e21e18fa-ab6d-4a3e-87f4-9a2549a22c3a',
+    authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    "Content-Type": "application/json",
   }
 });
 
