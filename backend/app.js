@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -12,8 +14,6 @@ const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/not-found-error');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
-require('dotenv').config();
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
