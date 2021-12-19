@@ -10,7 +10,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports.getUsers = (req, res, next) => {
   Users.find({})
-    .then((users) => res.send({ data: users }))
+    .then((users) => res.send({ users }))
     .catch(next);
 };
 
@@ -19,7 +19,7 @@ module.exports.getUserInfo = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError('Пользователь по указанному id не найден');
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send({ user }))
     .catch(next);
 };
 
@@ -30,7 +30,7 @@ module.exports.getUser = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError('Пользователь по указанному id не найден');
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send({ user }))
     .catch((err) => {
       if (err.name === 'CastError') {
         return next(new BadRequestError('Пользователь по указанному id не найден'));
@@ -53,9 +53,7 @@ module.exports.createUser = (req, res, next) => {
       name, about, avatar, email, password: hash,
     }))
     .then(() => res.send({
-      data: {
-        name, about, avatar, email,
-      },
+      name, about, avatar, email,
     }))
     .catch((err) => {
       if (err.code === 11000) {
@@ -78,7 +76,7 @@ module.exports.updateUserInfo = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError('Пользователь по указанному id не найден');
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send({ user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequestError('Переданы некорректные данные при обновлении профиля.'));
@@ -100,7 +98,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError('Пользователь по указанному id не найден');
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send({ user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequestError('Переданы некорректные данные при обновлении аватара.'));

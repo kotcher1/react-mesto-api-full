@@ -55,7 +55,8 @@ class Main extends React.Component {
           </button>
         </section>
         <section className="places">
-          {this.props.cards.map((card) => {
+          {console.log(this.props.cards)}
+          {this.props.cards.lengt > 0 && this.props.cards.map((card) => {
             return (
               <Card card={card} key={card._id} onCardClick={this.handleCardClick} onCardLike={this.onCardLike} onCardDelete={this.onCardDelete}/>
             )
